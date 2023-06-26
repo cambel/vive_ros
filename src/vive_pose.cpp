@@ -201,11 +201,18 @@ int main(int argc, char *argv[])
                 // touchpad_msg.layout.dim[0].size = controlHandler.pController[i]->buttons.touchpad.size();
                 // touchpad_msg.layout.dim[0].stride = 1;
                 // touchpad_msg.layout.dim[0].label = "x";
+
+                std_msgs::Int32 button_menu;
+                button_menu.data = controlHandler.pController[i]->buttons.menu;
+                std_msgs::Int32 button_grip;
+                button_grip.data = controlHandler.pController[i]->buttons.grip;
+                std_msgs::Float32 button_trigger;
+                button_trigger.data = controlHandler.pController[i]->buttons.trigger;
                 
                 pub_controller_pose[i].publish(controlHandler.pController[i]->pose.msg);
-                pub_controller_trigger[i].publish(controlHandler.pController[i]->buttons.trigger);
-                pub_controller_menu[i].publish(controlHandler.pController[i]->buttons.menu);
-                pub_controller_grip[i].publish(controlHandler.pController[i]->buttons.grip);
+                pub_controller_trigger[i].publish(button_trigger);
+                pub_controller_menu[i].publish(button_menu);
+                pub_controller_grip[i].publish(button_grip);
                 pub_controller_touchpad[i].publish(touchpad_msg);
             }
         }
