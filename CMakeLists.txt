@@ -78,71 +78,10 @@ find_package(catkin REQUIRED COMPONENTS
   tf
   std_srvs
   geometry_msgs
-  cv_bridge
-  image_transport
+  sensor_msgs
 )
 
 set(CMAKE_BUILD_TYPE "Release")
 
 catkin_package()
-
-include_directories(
-  include
-  ${catkin_INCLUDE_DIRS}
-)
-
-# VIVE node:
-add_executable(vive_node
-  ${SHARED_SRC_FILES}
-  src/vive_node.cpp
-  src/vr_interface.cpp
-)
-
-# VIVE pose:
-add_executable(vive_pose
-  ${SHARED_SRC_FILES}
-  src/vive_pose.cpp
-)
-
-add_executable(controller_tf2_broadcaster
-  ${SHARED_SRC_FILES}
-  # ${catkin_LIBRARIES}
-  src/controller_tf2_broadcaster.cpp
-)
-
-## link all
-target_link_libraries(vive_node
-  ${catkin_LIBRARIES}
-  ${OPENGL_LIBRARIES} ## (OpenGL specific)
-  ${GLEW_LIBRARIES} ## (OpenGL specific)
-  ${VULKAN_LIBRARY} ## (Vulkan specific)
-  ${SDL2_LIBRARIES}
-  ${OPENVR_LIBRARIES}
-  ${CMAKE_DL_LIBS}
-  ${EXTRA_LIBS}
-)
-
-## link all (VIVE pose)
-target_link_libraries(vive_pose
-  ${catkin_LIBRARIES}
-  ${OPENGL_LIBRARIES} ## (OpenGL specific)
-  ${GLEW_LIBRARIES} ## (OpenGL specific)
-  ${VULKAN_LIBRARY} ## (Vulkan specific)
-  ${SDL2_LIBRARIES}
-  ${OPENVR_LIBRARIES}
-  ${CMAKE_DL_LIBS}
-  ${EXTRA_LIBS}
-)
-
-target_link_libraries(controller_tf2_broadcaster
-  ${catkin_LIBRARIES}
-  ${OPENGL_LIBRARIES} ## (OpenGL specific)
-  ${GLEW_LIBRARIES} ## (OpenGL specific)
-  ${VULKAN_LIBRARY} ## (Vulkan specific)
-  ${SDL2_LIBRARIES}
-  ${OPENVR_LIBRARIES}
-  ${CMAKE_DL_LIBS}
-  ${EXTRA_LIBS}
-)
-
 

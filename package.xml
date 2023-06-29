@@ -1,26 +1,25 @@
 <?xml version="1.0"?>
 <package>
   <name>vive_ros</name>
-  <version>0.0.1</version>
+  <version>0.1.0</version>
   <description>The vive_ros package</description>
-  <author>Vitor Matos</author>
-  <author email="vmatos@robosavvy.com">Vitor Matos</author>
+  <author>Cristian C. Beltran-Hernandez</author>
+  <author email="cristianbehe@gmail.com">Cristian C. Beltran-Hernandez</author>
   
   <license>BSD</license>
-  <url type="website">http://wiki.ros.org/vive_ros</url>
-  <url type="repository">https://github.com/robosavvy/vive_ros</url>
-  <maintainer email="vmatos@robosavvy.com">Vitor Matos</maintainer>
   
-
+  <maintainer email="cristianbehe@gmail.com">Cristian C. Beltran-Hernandez</maintainer>
+  
   <buildtool_depend>catkin</buildtool_depend>
   
-
   <build_depend>roscpp</build_depend>  
   <build_depend>geometry_msgs</build_depend>
   <build_depend>std_srvs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
   <build_depend>tf</build_depend>
   
   <run_depend>geometry_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
   <run_depend>std_srvs</run_depend>
   
 </package>

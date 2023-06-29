@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Numerically integrate twists into a pose -->
+    <node name="vive" pkg="vive_ros" type="track_controller.py" output="screen">
+        <param name="config_file" value="$(find vive_ros)/config/vive_config.yaml"/>
+    </node>
+
+</launch>
