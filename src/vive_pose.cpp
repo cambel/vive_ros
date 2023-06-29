@@ -191,22 +191,22 @@ int main(int argc, char *argv[])
     while (ros::ok()) {
         GetControllerState(controlHandler);
         // controlHandler.DebugPrint();
+        std_msgs::Float32MultiArray touchpad_msg;
+        std_msgs::Int32 button_menu;
+        std_msgs::Int32 button_grip;
+        std_msgs::Float32 button_trigger;
 
         for(int i = 0; i < 2; i++)
         {
             if(controlHandler.pController[i]->status)
             {
-                std_msgs::Float32MultiArray touchpad_msg;
                 touchpad_msg.data = controlHandler.pController[i]->buttons.touchpad;
                 // touchpad_msg.layout.dim[0].size = controlHandler.pController[i]->buttons.touchpad.size();
                 // touchpad_msg.layout.dim[0].stride = 1;
                 // touchpad_msg.layout.dim[0].label = "x";
 
-                std_msgs::Int32 button_menu;
                 button_menu.data = controlHandler.pController[i]->buttons.menu;
-                std_msgs::Int32 button_grip;
                 button_grip.data = controlHandler.pController[i]->buttons.grip;
-                std_msgs::Float32 button_trigger;
                 button_trigger.data = controlHandler.pController[i]->buttons.trigger;
                 
                 pub_controller_pose[i].publish(controlHandler.pController[i]->pose.msg);
